@@ -104,24 +104,28 @@
     let DisplayTasks = (tasks) => {
         $("#task-list").empty()
 
-        tasks.forEach((task, idx) => {
-            let taskCard = `
-                <div class="p-2 px-4 my-1 rounded border">
-                    <h1 class="text-lg font-medium">${task.taskName}</h1>
-                    <div class="mt-2 flex justify-between items-center">
-                        <h1 class="text-sm">Task Priority : <span class="italic capitalize font-bold">${task.taskPriority}</span></h1>
-                        <hr>
-                        <div class="flex gap-2">
-                            
-                            <!-- <button class="text-sm bg-green-600 text-white p-1 px-2 rounded">Complete Task</button> -->
-                            <button id="delete-btn" class="text-sm bg-red-500 text-white p-1 px-2 rounded" data-task-id="${task._id}">Delete Task</button>
+        if(tasks.length > 0){
+            tasks.forEach((task, idx) => {
+                let taskCard = `
+                    <div class="p-2 px-4 my-1 rounded border">
+                        <h1 class="text-lg font-medium">${task.taskName}</h1>
+                        <div class="mt-2 flex justify-between items-center">
+                            <h1 class="text-sm">Task Priority : <span class="italic capitalize font-bold">${task.taskPriority}</span></h1>
+                            <hr>
+                            <div class="flex gap-2">
+                                
+                                <!-- <button class="text-sm bg-green-600 text-white p-1 px-2 rounded">Complete Task</button> -->
+                                <button id="delete-btn" class="text-sm bg-red-500 text-white p-1 px-2 rounded" data-task-id="${task._id}">Delete Task</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `
-            $("#task-list").append(taskCard)
+                `
+                $("#task-list").append(taskCard)
 
-        })
+            })
+        }else{
+            $("#task-list").append(`<p class="text-center text-slate-400 italic">No tasks</p>`)
+        }
     }
 
 </script>
